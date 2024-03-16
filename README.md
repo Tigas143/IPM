@@ -2,7 +2,9 @@
 
 Reducing the time spent on selecting a specific target.
 
+
 ***How to run***
+
 
 Clone this repo
 ```bash
