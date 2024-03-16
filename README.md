@@ -3,7 +3,9 @@
 Reducing the time spent on selecting a specific target.
 
 
-***How to run***
+
+_***How to run***_
+
 
 
 Clone this repo
