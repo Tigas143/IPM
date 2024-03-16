@@ -4,7 +4,7 @@
 
 Clone this repo
 ```bash
-git clone Margarida-Lourenco/IPM-bake-off-2 
+git clone git@github.com:Margarida-Lourenco/IPM-bake-off-2.git 
 ```
 
 Followed by
