@@ -72,7 +72,8 @@ function preload()
   legendas = loadTable('legendas.csv', 'csv', 'header');
   right_answer = loadSound('sounds/right_answer.mp3');
   wrong_answer = loadSound('sounds/wrong_answer.mp3');
-
+  good_job_image = loadImage('Screen/final.png');
+  initial_screen = loadImage('Screen/initial_screen.png');
 }
 
 // Runs once at the start
@@ -82,7 +83,7 @@ function setup()
   frameRate(60);             // frame rate (DO NOT CHANGE!)
   
   randomizeTrials();         // randomize the trial order at the start of execution
-  drawUserIDScreen();        // draws the user start-up screen (student ID and display size)
+  drawUserIDScreen(initial_screen);        // draws the user start-up screen (student ID and display size)
 }
 
 // Runs every frame and redraws the screen
@@ -140,6 +141,8 @@ function printAndSavePerformance()
   text("Total time taken: " + test_time + "s", width/2, 160);
   text("Average time per target: " + time_per_target + "s", width/2, 180);
   text("Average time for each target (+ penalty): " + target_w_penalty + "s", width/2, 220);
+  
+  image(good_job_image, 650, 550);
 
   // Saves results (DO NOT CHANGE!)
   let attempt_data = 

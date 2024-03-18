@@ -30,7 +30,7 @@ class Target
     
     
     // Draw label
-    textFont("Arial", 25);
+    textFont("Arial", 20);
     fill(color(0));
     textAlign(CENTER);
     text(this.label, this.x, this.y);
