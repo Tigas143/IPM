@@ -4,10 +4,34 @@ let student_ID_form, display_size_form, start_button;                  // Initia
 let student_ID, display_size;                                          // User input parameters
 
 // Prints the initial UI that prompts that ask for student ID and screen size
-function drawUserIDScreen()
+function drawUserIDScreen(initial_screen)
 { 
   background(color(0,0,0));                                          // sets background to black
+  image(initial_screen, 0,236);
   
+  textFont("Arial", 16);
+    fill(color(238, 75, 43));
+    textAlign(LEFT);
+  text("ATTENTION!", 470, 90);
+  fill(color(255));
+  text("Use 16 inches or higher for a better", 400, 120);
+  text("experience", 400, 140);
+  textFont("Arial", 16);
+    fill(color(255));
+    textAlign(LEFT);
+    text("How to Play:", 380, 250);
+    text("At the bottom of the screen it will appear", 380, 280)
+  text("a word, you must find that word amongst ",380, 300);
+  text("the other ones as fast as you can!", 380, 320); 
+  text("on the screen you will find 10 categories.", 380, 340);
+  text("The letters on each one correspond to", 380, 360);
+  text("the first 2 letters of the words you can", 380, 380);
+  text("find in them ", 380, 400);
+  
+  textFont("Arial", 25);
+  textStyle(BOLD);
+  fill(color(104, 189, 232));
+  text("How fast can you be?", 400, 450);
   // Text prompt
   main_text = createDiv("Insert your student number and display size");
   main_text.id('main_text');
@@ -37,7 +61,7 @@ function drawUserIDScreen()
   // 3. Start button
   start_button = createButton('START');
   start_button.mouseReleased(startTest);
-  start_button.position(width/2 - start_button.size().width/2, height/2 - start_button.size().height/2);
+  start_button.position(width/2 - start_button.size().width/2, height/3 - start_button.size().height/2);
 }
 
 // Verifies if the student ID is a number, and within an acceptable range

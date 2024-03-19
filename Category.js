@@ -37,7 +37,7 @@ class Category
                 break;
             
             case 2:  // selected
-                fill(color(229,56,45));
+                fill(color(193,41,46));
                 circle(this.x, this.y, this.radius);
 
                 // Draw label
