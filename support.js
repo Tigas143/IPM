@@ -7,31 +7,39 @@ let student_ID, display_size;                                          // User i
 function drawUserIDScreen(initial_screen)
 { 
   background(color(0,0,0));                                          // sets background to black
-  image(initial_screen, 0,236);
+  image(initial_screen, 0,230);
+  
+  textFont("Arial", 20);
+    fill(color(238, 75, 43));
+    textStyle(BOLD);
+    textAlign(LEFT);
+  text("ATENÇÃO!", 470, 50);
   
   textFont("Arial", 16);
-    fill(color(238, 75, 43));
-    textAlign(LEFT);
-  text("ATTENTION!", 470, 90);
-  fill(color(255));
-  text("Use 16 inches or higher for a better", 400, 120);
-  text("experience", 400, 140);
+  textAlign(LEFT);
+  fill(color(255, 255, 0));
+  textStyle(NORMAL);
+  text("O tempo começa apenas após clicares", 400, 80);
+  text("na PRIMEIRA CIDADE!", 400, 100);
+  text("Aproveita os momentos iniciais para", 400, 140);
+  text("explorar as categorias e te familiarizares", 400, 160);
+  text("com o jogo ;)", 400, 180);
   textFont("Arial", 16);
     fill(color(255));
     textAlign(LEFT);
-    text("How to Play:", 380, 250);
-    text("At the bottom of the screen it will appear", 380, 280)
-  text("a word, you must find that word amongst ",380, 300);
-  text("the other ones as fast as you can!", 380, 320); 
-  text("on the screen you will find 10 categories.", 380, 340);
-  text("The letters on each one correspond to", 380, 360);
-  text("the first 2 letters of the words you can", 380, 380);
-  text("find in them ", 380, 400);
+    text("Como jogar:", 380, 250);
+    text("No fundo do ecrã irá aparecer uma", 380, 280)
+  text("palavra. Deves encontrá-la entre as",380, 300);
+  text("outras O MAIS RÁPIDO QUE", 380, 320); 
+  text("CONSEGUIRES! No ecrã estão presentes", 380, 340);
+  text("18 categorias. Cada letra nelas escrita", 380, 360);
+  text("corresponde à ÚLTIMA LETRA da palavra", 380, 380);
+  text("que nelas podes encontrar.", 380, 400);
   
   textFont("Arial", 25);
   textStyle(BOLD);
   fill(color(104, 189, 232));
-  text("How fast can you be?", 400, 450);
+  text("O quão rápido és?", 430, 450);
   // Text prompt
   main_text = createDiv("Insert your student number and display size");
   main_text.id('main_text');
@@ -61,7 +69,7 @@ function drawUserIDScreen(initial_screen)
   // 3. Start button
   start_button = createButton('START');
   start_button.mouseReleased(startTest);
-  start_button.position(width/2 - start_button.size().width/2, height/3 - start_button.size().height/2);
+  start_button.position(width/2.4 - start_button.size().width/2, height/3 - start_button.size().height/2);
 }
 
 // Verifies if the student ID is a number, and within an acceptable range
