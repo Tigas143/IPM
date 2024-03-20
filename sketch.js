@@ -28,7 +28,7 @@ let current_trial         = 0;      // the current trial number (indexes into tr
 let attempt               = 0;      // users complete each test twice to account for practice (attemps 0 and 1)
 
 // Common variables
-const NUMBER_CATEGORIES = 10;
+const NUMBER_CATEGORIES = 18;
 const NUMBER_TARGETS = 80;
 const SELECTED = 2;
 const UNSELECTED = 1;
@@ -46,24 +46,33 @@ const GRID_ROWS           = 8;      // We divide our 80 targets in a 8x10 grid
 const GRID_COLUMNS        = 10;     // We divide our 80 targets in a 8x10 grid
 
 // Categories
-const BA = [54, 26, 42, 36, 34, 80, 41, 56, 28, 37, 49, 74, 21, 72, 14, 66, 52, 65, 46, 68, 58, 1, 33, 75, 79, 29, 19];
-const BE = [63, 67, 30, 2, 12, 77, 43, 57, 3, 11, 40];
-const BH = [38, 25, 53];
-const BI = [78, 70, 71, 13, 62, 73, 32, 22, 48];
-const BU = [8, 9, 10, 18, 23, 35, 39, 45, 47, 59];
-const BO = [15, 50, 5, 4];
-const BR = [31, 76, 6, 44, 20, 17, 61, 51, 27, 16, 60, 7, 64];
-const BL = [55];
-const BN = [69];
-const BY = [24];
+
+const A = [54, 1, 49, 71, 43, 28, 44, 15, 4, 35, 76, 16, 23];
+const D = [68, 36, 31, 73];
+const E = [66, 21, 12, 6];
+const G = [19, 80, 2, 64];
+const H = [79];
+const I = [52, 29, 38, 30, 39, 60];
+const K = [48, 32, 69, 59];
+const L = [26, 25, 17];
+const M = [67, 74, 50, 13];
+const N = [3, 46, 5, 55, 18, 20, 47];
+const O = [75, 42, 33, 72, 34, 58, 40, 22, 27];
+const R = [41, 65, 63, 53, 70, 62, 78];
+const S = [9, 7];
+const T = [51, 11, 8, 10];
+const U = [14, 37, 77];
+const V = [57, 61];
+const Y = [45];
+const Z = [24, 56];
 
 // List of categories
-let catList = [BA, BE, BI, BU, BO, BR, BL, BN, BH, BY]
+let catList = [A, D, E, G, H, I, K, L, M, N, O, R, S, T, U, V, Y, Z];
 
 let categories             = [];     // Category List
-let catlabels = ["Ba", "Be", "Bi", "Bu" , "Bo", "Br", "Bl", "Bn", "Bh", "By"];
+let catlabels = ["A", "D", "E", "G", "H", "I", "K", "L", "M", "N", "O", "R", "S", "T", "U", "V", "Y", "Z"];
 
-let num_targets_cat=[27,11,9,10,4,13,1,1, 3, 1];  // number of targets per category
+let num_targets_cat=[13, 4, 4, 4, 1, 6, 4, 3, 4, 7, 9, 7, 2, 4, 3, 2, 1, 2];  // number of targets per category
 
 // Ensures important data is loaded before the program starts
 function preload()
@@ -73,7 +82,7 @@ function preload()
   right_answer = loadSound('sounds/right_answer.mp3');
   wrong_answer = loadSound('sounds/wrong_answer.mp3');
   good_job_image = loadImage('Screen/final.png');
-  initial_screen = loadImage('Screen/initial_screen.png');
+  initial_screen = loadImage('Screen/img1.png');
 }
 
 // Runs once at the start
@@ -260,115 +269,55 @@ function continueTest()
   draw_targets = true; 
 }
 
-function createTargets(displaycenter_x, displaycenter_y, t_width, t_height, margin, circle_size)
-{
-  // Colours
-  WHITE = color(255);
-  FUSHIA = color(240, 115, 198);
-  GREEN = color(112, 162, 136);
-  BLUE = color(148, 113, 98);
-  SEAL_BROWN = color(136, 73, 143);
-  VIOLET = color(72,3,85);
-  LIGHT_BLUE = color(97, 197, 255);
-  OFFICE_GREEN = color(232, 49, 49);
-  PINK = color(255, 59, 134);
-  WHINE = color(193, 51, 0);
-  BROWN = color(102, 114, 191);
-  DARK_BLUE = color(234, 196, 53);
-  INDIAN_RED = color(219, 84, 97);
-  TEAL = color(255, 196, 123);
-  LILAC = color(104, 189, 232);
-  CAMBRIDGE_BLUE = color(130, 87, 0);
-
-  const cBA= [FUSHIA, BLUE, GREEN, PINK, FUSHIA, BROWN, SEAL_BROWN, LIGHT_BLUE, FUSHIA, BROWN, SEAL_BROWN, INDIAN_RED, DARK_BLUE, FUSHIA, TEAL, GREEN, DARK_BLUE, FUSHIA, OFFICE_GREEN, GREEN, CAMBRIDGE_BLUE, FUSHIA, WHINE, GREEN, CAMBRIDGE_BLUE, FUSHIA, BLUE];
-  
-  const cBE = [LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC];
-  
-  const cBI = [LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC];
-  
-  const cBU = [LILAC, LILAC,LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC];
-  
-  const cBO = [LILAC, LILAC, LILAC, LILAC];
-  
-  const cBR = [LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC, LILAC];
-  
-  const cBL = [LILAC];
-  
-  const cBN = [LILAC];
-  
-  const cBH = [LILAC,LILAC, LILAC];
-  
-  const cBY = [LILAC];
-  
-  let colList = [cBA, cBE, cBI, cBU, cBO, cBR, cBL, cBN, cBH, cBY];
-  
+function createTargets(t_width, t_height, margin, circle_size) {
+  const LILAC = color(104, 189, 232);
   let buffer =[];
   
-for (let i = 0; i < NUMBER_CATEGORIES; i++) {
+  for (let i = 0; i < NUMBER_CATEGORIES; i++) {
     let num = num_targets_cat[i];
-    let offsetX = (i % 2 < 1) ? -1 : 1; // 2 columns
-    let offsetY = (Math.floor(i / 2) * 1.3 * t_height) - (2 * circle_size + margin);
+    let offsetX = (i % 4 < 2) ? -1 : 1;
+    let offsetY = (Math.floor(i / 4) * 1.3 * t_height) - (2 * circle_size + margin);
 
     for (let j = 1; j <= num; j++) {
-        let target_x = screen_width / 2 - t_width/2 - 1.5 * margin+ offsetX * (2 * circle_size);
-        let target_y = screen_height / 2 + offsetY;
+      let target_x = screen_width / 2 + offsetX * (2 * circle_size + t_width/2 + 1.5 * margin);
+      let target_y = screen_height / 2 + offsetY;
 
-        switch (num) {
-            case 3: // triangle
-                target_y += 1.3 * t_height * ((j - 1) % 3) - t_height;
-                break;
-            case 4: // square
-                target_x += 1.1 * t_width * ((j - 1) % 2) * offsetX;
-                target_y += 1.3 * t_height * Math.floor((j - 1) / 2) - t_height;
-                break;
-            case 9:
-                target_x += 1.1 * t_width * ((j - 1) % 3) * offsetX;
-                target_y += 1.3 * t_height * Math.floor((j - 1) / 3) - t_height;
-                break;
+      if (num === 4 || num === 6 || num === 9 || num === 7 || num === 3) {
+        target_x += 1.1 * t_width * ((j - 1) % 2) * offsetX;
+        target_y += 1.3 * t_height * Math.floor((j - 1) / 2) - (num === 9 ? 2 * t_height : t_height);
         
-            case 10:
-              target_x += 1.1*t_width*((j-1)%3)*offsetX;
-              target_y += 1.3*t_height*(Math.floor((j-1)/3))-t_height;
-            break;
-            case 11:
-              target_x += 1.1*t_width*((j-1)%3)*offsetX;
-              target_y += 1.3*t_height*(Math.floor((j-1)/3))-t_height;
-            break;
-            case 13:
-              target_x += 1.1*t_width*((j-1)%3)*offsetX;
-              target_y += 1.3*t_height*(Math.floor((j-1)/3))-t_height;
-            break;
-            case 27:
-              target_x += 1.1*t_width*((j-1)%4)*offsetX;
-              target_y += 1.3*t_height*(Math.floor((j-1)/4))-t_height
-            break;
+      } else if (num === 2) {
+        target_x += 1.1 * t_width * ((j - 1) % 2) * offsetX;
+        
+      } else if (num === 13) {
+        target_x += 1.1 * t_width * ((j - 1) % 3) * offsetX;
+        target_y += 1.3 * t_height * Math.floor((j - 1) / 3) - t_height;
+      }
 
-          }
-        // creates target
-        let label_id = catList[i][j-1];
-        let col_id = colList[i][j-1];
-        
-        let target_label = legendas.getString(label_id-1, 1);
-        
-        let target = new Target(target_x, target_y, t_width, t_height,target_label, label_id-1, col_id, i);
-        buffer.push(target);
+      let label_id = catList[i][j-1];
+      let target_label = legendas.getString(label_id-1, 1);
+      let target = new Target(target_x, target_y, t_width, t_height, target_label, label_id - 1, LILAC, i);
+      
+      buffer.push(target);
     }
     targets.push(buffer);
     buffer = [];
   }
 }
+
+
 // creates an array with all the categories
 function createCategories(circle_size, margin)
 {
   let i=0;
-  while(i<11){
+  while(i<18){
       // calculates positions
     for (var r = 0; r < 5; r++)
     {
       let cat_y, cat_x;
       cat_y = screen_height/2 - (2-r)*circle_size - (2-r)*margin;
       
-      for (var c = 0; c < 2; c++)
+      for (var c = 0; c < 4; c++)
       {
         cat_x = screen_width/2 - (1.5-c)*circle_size - (1.5-c)*margin;
       
@@ -394,7 +343,7 @@ function windowResized()
   
     // Make your decisions in 'cm', so that targets have the same size for all participants
     // Below we find out out white space we can have between 2 cm targets
-    screen_width   = display.width * 3.5 * PPCM;             // screen width
+    screen_width   = display.width * 2.85 * PPCM;             // screen width
     screen_height  = display.height * 2.54 * PPCM;            // screen height
 
     let cat_size    = 2;                                // size of category's circle
@@ -403,7 +352,7 @@ function windowResized()
     let target_height    = 1.8;                          // size of circle that the categories surround
 
     // Creates and positions the UI targets according to the white space defined above (in cm!)
-    createTargets(screen_width/2, screen_height/2, target_width*PPCM, target_height*PPCM, margin * PPCM, cat_size*PPCM); // creates targets list
+    createTargets(target_width*PPCM, target_height*PPCM, margin * PPCM, cat_size*PPCM); // creates targets list
     createCategories(cat_size * PPCM, margin * PPCM);  // creates categories list
 
     // Starts drawing targets immediately after we go fullscreen
