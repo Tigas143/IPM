@@ -40,6 +40,7 @@ function drawUserIDScreen(initial_screen)
   textStyle(BOLD);
   fill(color(104, 189, 232));
   text("O quão rápido és?", 430, 450);
+  textStyle(NORMAL);
   // Text prompt
   main_text = createDiv("Insert your student number and display size");
   main_text.id('main_text');
