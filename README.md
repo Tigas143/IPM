@@ -18,3 +18,5 @@ Followed by
 python -m http.server
 ```
 In case the window doesn't work, replace "0.0.0.0:" with "localhost:"
+
+Everytime you make changes on the code, make sure to refresh the page that was open with the last command :)
